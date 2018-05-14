@@ -22,12 +22,43 @@ const orm = {
 
     updateOne: function(selTable,id) {
         return new Promise((resolve,reject) => {
-            connection.query(`SELECT * FROM ${selTable} WHERE id= ${id}; `, (err, result) => {
+            connection.query(`UPDATE ${selTable} SET devoured = 1 WHERE id= ${id}; `, (err, result) => {
                 if(err) reject(err);
                 resolve(result);
             })
         });
     }
 };
+
+const orm_seq = {
+    selectAll: function() {
+        Burger.findAll().then(result => {
+            return result;
+        }).catch(err => {
+            console.log('Unable to connect to the database:', err);
+        })
+    },
+
+    insertOne: function(bgName) {
+        Burger.create({
+            burger_name: bgName,
+        }).then(()=> {
+            Burger.findAll().then(result => {
+                return result;
+            }).catch(err => {
+                console.log('Unable to connect to the database:', err);
+            })
+        })
+    },
+
+    updateOne: function(id) {
+        Burger.findById(id).then(result=> {
+            result.devoured = 1;
+            result.save();
+        }).catch(err => {
+            console.log('Unable to connect to the database:', err);
+        });
+    }
+}
 
 module.exports = orm;

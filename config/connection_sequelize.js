@@ -26,6 +26,9 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
+function logOut() {
+    sequelize.close();
+};
 
 const Burgers = sequelize.define('burgers', {
     id : {
@@ -34,7 +37,7 @@ const Burgers = sequelize.define('burgers', {
     },
     burger_name: Sequelize.STRING,
     devoured: Sequelize.BOOLEAN,
-    date: Sequelize.Date(6)
+    date: Sequelize.DATE
 }, {
     timestamps:false,
 });
