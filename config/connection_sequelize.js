@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-const mysql_key = require('../keys.js')
+const mysql_password = require('../keys.js')
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('burgers_db','root', mysql_key.password, {
+const sequelize = new Sequelize('burgers_db','root', mysql_password, {
     host: 'localhost',
     dialect: 'mysql',
     operatorsAliases: false,

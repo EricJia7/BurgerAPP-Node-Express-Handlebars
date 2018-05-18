@@ -1,5 +1,5 @@
 console.log('Mysql keys has been loaded');
 
-exports.mysql = {
-    password: process.env.MYSQL_PASSWORD,
-}
+const mysql_password = process.env.MYSQL_PASSWORD;
+
+module.exports = mysql_password;
