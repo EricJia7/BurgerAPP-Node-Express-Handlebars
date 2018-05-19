@@ -1,0 +1,31 @@
+
+#bodystyle {
+    background-color: #bad5dd;
+}
+
+#jbtImg {
+    height: 100%;
+    width:15em;
+}
+
+.jbtText {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0.5em
+ }
+
+label {
+    font-family: 'Roboto', sans-serif;
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.jumbotron {
+    padding: 0;
+}
+
+.form-inline {
+    text-align: center;
+}
