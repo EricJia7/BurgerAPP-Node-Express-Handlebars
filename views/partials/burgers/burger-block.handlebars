@@ -1,0 +1,9 @@
+
+<div class="col-md-8 bgNameText text-center">
+    {{ burger_name}}
+</div>
+<div class="col-md-4 bgDevourBtn">
+    {{#if notDevoured}}
+        <button class= 'delete_burger btn btn-warning' data-id="{{this.id}}">Devour</button>
+    {{/if}}
+</div>

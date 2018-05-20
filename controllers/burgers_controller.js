@@ -10,8 +10,14 @@ router.get('/', (req,res) => {
         let bgObj = {
             burgers: data
         };
-        res.render('index');
+        res.render('index',bgObj);
     })
 });
+
+router.post('/api/burgers', (req,res) => {
+    burger.insertOne(req.body.name, function(data){
+        res.json({id: result.id});
+    })
+})
 
 module.exports = router;
