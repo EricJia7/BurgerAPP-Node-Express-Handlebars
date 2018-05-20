@@ -1,32 +1,6 @@
 const connection = require('../config/connection_mysql.js');
 const Burger = require('../config/connection_sequelize.js');
 
-function printQuestionMarks(num) {
-    var arr = [];
-  
-    for (var i = 0; i < num; i++) {
-      arr.push("?");
-    }
-  
-    return arr.toString();
-  }
-
-
-  function objToSql(ob) {
-    var arr = [];
-      for (var key in ob) {
-      var value = ob[key];
-      if (Object.hasOwnProperty.call(ob, key)) {
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
-        }
-        arr.push(key + "=" + value);
-      }
-    }
-      return arr.toString();
-  }
-
-
 const orm = {
     selectAll: function(selTable) {
         return new Promise((resolve,reject) => {
@@ -39,7 +13,7 @@ const orm = {
 
     insertOne: function(selTable,bgName) {
         return new Promise((resolve,reject) => {
-            connection.query(`INSERT INTO ${selTable} (burger_name)  VALUES(${bgName}) ;`, (err,result) => {
+            connection.query(`INSERT INTO ${selTable} (burger_name)  VALUES("${bgName}") ;`, (err,result) => {
                 if(err) reject(err);
                 resolve(result);
             })
@@ -48,7 +22,7 @@ const orm = {
 
     updateOne: function(selTable,id) {
         return new Promise((resolve,reject) => {
-            connection.query(`UPDATE ${selTable} SET devoured = 1 WHERE id= ${id}; `, (err, result) => {
+            connection.query(`UPDATE ${selTable} SET devoured = 1 WHERE id= "${id}"; `, (err, result) => {
                 if(err) reject(err);
                 resolve(result);
             })

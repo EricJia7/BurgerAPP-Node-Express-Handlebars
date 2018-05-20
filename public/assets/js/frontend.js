@@ -1,25 +1,31 @@
 $(function() {
-    console.log('I am loaded');
 
     $('#submitBtn').on('click', (event) => {
         event.preventDefault();
-        let nameInput = $('#inputName').val().trim();
-  
+        const nameInput = $('#inputName').val().trim();
         if(nameInput === '') {return;};
-
-        let newBurger = {
+        const newBurger = {
             name:nameInput
         };
-
-        console.log(newBurger)
-
         $.ajax('/api/burgers', {
             type: 'POST',
             data: newBurger
         }).then(() => {
             location.reload();
         })
+    });
 
-    })
+    $('.devour_burger').on('click', (event) => {
+        event.preventDefault();
+        const id = $(event.currentTarget).data('id');
+        console.log(`/api/burgers/${id}`);
+
+        $.ajax('/api/burgers/'+ id, {
+            type: 'PUT',
+        }).then(() => {
+            location.reload();
+        })
+    });
+
 });
 

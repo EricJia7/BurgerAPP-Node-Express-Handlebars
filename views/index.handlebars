@@ -21,8 +21,12 @@
 </div>
 
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-4">
+  <div class="col-md-3 offset-md-3">
+    <div class="row rowTextHeader1">
+      <p class ='text-center  text-uppercase'>
+        Burgers to Eat!
+      </p>
+    </div>
     <div class="row">
       {{#each burgers}}
           {{#unless devoured}}
@@ -31,8 +35,12 @@
       {{/each}}
     </div>
   </div>
-  <div class="col-md-1"></div>
-  <div class="col-md-4">
+  <div class="col-md-3 offset-md-1">
+    <div class="row rowTextHeader2">
+      <p class ='text-center  text-uppercase'>
+        Burgers Devoured!
+      </p>
+    </div>
     <div class="row">
       {{#each burgers}}
           {{#if devoured}}
@@ -41,6 +49,5 @@
       {{/each}}
     </div>
   </div>
-  <div class="col-md-1"></div>
 </div>
 
